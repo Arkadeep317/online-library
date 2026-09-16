@@ -230,14 +230,6 @@ python manage.py runserver
 
 ---
 
-### Environment Variables (Optional)
-
-```
-DEBUG=True
-SECRET_KEY=your_secret_key
-```
-
----
 
 ## 🔄 Application Flow
 
@@ -277,7 +269,6 @@ Open for contributions and improvements.
 
 ---
 
-## ❤️ Made With Love
 
 Made  using Python & Django
 By **Arkadeep Si**

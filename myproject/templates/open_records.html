@@ -1,0 +1,78 @@
+{% extends 'base.html' %} {% block content %}
+
+<h2>
+  <i
+    class="fa-solid fa-sm fa-folder-open"
+    style="color: rgba(0, 2, 43, 0.774)"
+  ></i>
+  Open Records
+</h2>
+
+<div class="search-bar-container">
+    <div class="search-wrapper">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="openRecordSearch" class="search-input" placeholder="Search by user, book, or author...">
+    </div>
+  <a href="{% url 'borrow_book' %}"
+    ><button class = "beside-search-bar-btn">
+      <i
+        class="fa-brands fa-sm fa-get-pocket"
+        style="color: rgb(255, 255, 255)"
+      ></i>
+      Borrow Book
+    </button></a
+  >
+</div>
+
+<table border="1" id="openRecordsTable"><tbody>
+  <tr>
+    <th>Borrow_ID</th>
+    <th>User</th>
+    <th>Book</th>
+    <th>Author</th>
+    <th>Issue Date</th>
+    <th>Fine</th>
+    <th>Actions</th>
+  </tr>
+
+  {% for record in open_records %}
+  <tr>
+    <td>{{record.id}}</td>
+    <td>{{ record.user }}</td>
+    <td>{{ record.book }}</td>
+    <td>{{record.book.author}}</td>
+    <td>{{ record.issue_date|date:"d-m-Y" }}</td>
+    <td>
+      {% if record.fine > 0 %}
+      <span style="color: red">₹ {{ record.fine|floatformat:2 }}</span>
+      {% else %}
+      <span style="color: green">₹ 0.00</span>
+      {% endif %}
+    </td>
+    <!-- <td>{{record.fine}}</td> -->
+    <td>
+      <a
+        class="return-btn-green {% if record.fine > 0 %}return-btn-red{% endif %}"
+        href="{% url 'return_book' record.id %}"
+        onclick="return confirm('Are you sure you want to Return this Book?');"
+      >
+        {% if record.fine > 0 %} Return and Pay {% else %} Return {% endif %}
+      </a>
+      <a href="{% url 'record_detail' record.id %}"
+        ><i class="fa-solid fa-eye" style="color: rgb(0, 129, 230)"></i
+      ></a>
+    </td>
+  </tr>
+  {% endfor %}
+</tbody></table>
+
+<script>
+  document.getElementById('openRecordSearch').addEventListener('keyup', function(e) {
+    const query = e.target.value.toLowerCase();
+    document.querySelectorAll('#openRecordsTable tbody tr').forEach(row => {
+      row.style.display = row.textContent.toLowerCase().includes(query) ? '' : 'none';
+    });
+  });
+</script>
+
+{% endblock %}

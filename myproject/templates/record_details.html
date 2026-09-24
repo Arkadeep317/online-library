@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 id="detail-h2">Borrow Record of {{record.user}}</h2>
+{% if record.status == 'open' %}
+<div class="detail-container" style="background: linear-gradient(145deg, #64d496 0%, #289d5f 50%, #127441 100%);">
+{% else %}
+<div class="detail-container" style="background: linear-gradient(145deg, #ff8692 0%, #dd4c5d 50%, #99212f 100%);">
+{% endif %}
+    <div class="detail-pane-left">
+        <p><strong>Borrow_ID:</strong> {{record.id}}</p>
+        <p><strong>User:</strong> {{ record.user }}</p>
+        <p><strong>Book:</strong> {{ record.book }}</p>
+        <p><strong>Issue Date:</strong> {{ record.issue_date|date:"d-m-Y"  }}</p>
+        <p><strong>Return Date:</strong> {{ record.return_date|date:"d-m-Y"  }}</p>
+        <p><strong>Status:</strong> {{ record.status }}</p>
+        <a href="{% url 'open_records' %}">
+            <button style="background-color:rgb(44, 61, 96); margin-bottom: -10px; margin-top: 5px">Back To List</button>
+        </a>
+    </div>
+    <div class="detail-pane-right">
+        <i class="detail-icon fa-solid fa-hand-holding"></i>
+    </div>
+</div>
+
+{% endblock %}

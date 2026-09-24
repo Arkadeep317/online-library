@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2><i class="fa-brands fa-sm fa-get-pocket" style="color: rgba(0, 2, 43, 0.774);"></i> Borrow Book</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Borrow</button>
+    <button type="button" onclick="history.back()">Go Back</button>
+</form>
+
+{% endblock %}

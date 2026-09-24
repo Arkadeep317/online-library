@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2><i class="fa-solid fa-sm fa-pen-to-square" style="color: rgba(0, 2, 43, 0.774);"></i> Edit Book</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+    <button type="button" onclick="history.back()">Go Back</button>
+</form>
+
+{% endblock %}

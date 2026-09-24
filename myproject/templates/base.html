@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library System</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon-yellow.png' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    {% load static %}
+    <div class="container">
+        <nav class="sidebar">
+            <div class="nav-header">
+                <img class="nav-header-icon" src="{% static 'images/book-nav.png' %}" alt="Library logo">
+                <div class="nav-header-title">Library Suite</div>
+            </div>
+            <a href="{% url 'dashboard' %}" class="nav-link"><i class="fa-solid fa-gauge fa-sm" style="color: rgb(255, 255, 255);"></i>  Dashboard</a>
+            <a href="{% url 'users' %}" class="nav-link"><i class="fa-solid fa-sm fa-user" style="color: rgb(255, 255, 255);"></i>  Users</a>
+            <a href="{% url 'books' %}" class="nav-link"><i class="fa-solid fa-book fa-sm" style="color: rgb(255, 255, 255);"></i>  Books</a>
+            <a href="{% url 'open_records' %}" class="nav-link"><i class="fa-solid fa-sm fa-folder-open" style="color: rgb(255, 255, 255);"></i>   Open Records</a>
+            <a href="{% url 'closed_records' %}" class="nav-link"><i class="fa-solid fa-sm fa-folder-closed" style="color: rgb(255, 255, 255);"></i>   Closed Records</a>
+        </nav>
+
+        <main class="content">
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags|default:'info' }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+    <div class="footer">
+        <span>© 2026 Library Suite</span>
+        <span>E-library</span>
+    </div>
+</body>
+
+</html>

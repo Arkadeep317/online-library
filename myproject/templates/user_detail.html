@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 id="detail-h2">Details of User {{user.name}}</h2>
+<div class="detail-container" style="background: linear-gradient(145deg, #61cadd 0%, #36b8d6 45%, #208daf 100%);">
+	<div class="detail-pane-left">
+		<p><strong>User_ID:</strong> {{user.id}}</p>
+		<p><strong>Name:</strong> {{ user.name }}</p>
+		<p><strong>Email:</strong> {{ user.email }}</p>
+		<p><strong>Phone:</strong> {{ user.phone }}</p>
+		<p><strong>Address:</strong> {{ user.address }}</p>
+		<a href="{% url 'users' %}">
+			<button style="background-color:rgb(44, 61, 96); margin-bottom: -10px; margin-top: 5px">Back To List</button>
+		</a>
+	</div>
+	<div class="detail-pane-right">
+		<i class="detail-icon fa-solid fa-user"></i>
+	</div>
+</div>
+
+{% endblock %}

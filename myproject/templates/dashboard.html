@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h2><i class="fa-solid fa-sm fa-gauge" style="color: rgba(0, 2, 43, 0.774);"></i> Dashboard</h2>
+
+<h3>Welcome to the Library Suite, the Library Management System!</h3>
+
+<div class="dashboard-grid">
+	<div class="dashboard-card" id = "user-card">
+		<h3>Users</h3>
+		<p class="dashboard-count">{{ users_count }}</p>
+		<img class="dashboard-card-icon" src="{% static 'images/user.png' %}" alt="Users icon">
+        <div class = "more-info">
+            <a href="{% url 'users' %}">More Info <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+        </div>
+	</div>
+
+	<div class="dashboard-card" id = "book-card">
+		<h3>Books</h3>
+		<p class="dashboard-count">{{ books_count }}</p>
+		<img class="dashboard-card-icon" src="{% static 'images/books.png' %}" alt="Books icon">
+        <div class="more-info">
+            <a href="{% url 'books' %}">More Info <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+        </div>
+	</div>
+
+	<div class="dashboard-card" id = "open-rec-card">
+		<h3>Open Records</h3>
+		<p class="dashboard-count">{{ open_records_count }}</p>
+		<img class="dashboard-card-icon" src="{% static 'images/open-folder.png' %}" alt="Open records icon">
+        <div class = "more-info">
+		    <a href="{% url 'open_records' %}">More Info <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+        </div>
+	</div>
+
+	<div class="dashboard-card" id = "closed-rec-card">
+		<h3>Closed Records</h3>
+		<p class="dashboard-count">{{ closed_records_count }}</p>
+		<img class="dashboard-card-icon" src="{% static 'images/closed-folder.png' %}" alt="Closed records icon">
+        <div class="more-info">
+            <a href="{% url 'closed_records' %}">More Info <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+        </div>
+	</div>
+</div>
+
+{% endblock %}

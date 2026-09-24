@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 id="detail-h2">Details of the Book '{{book.title}}'</h2>
+<div class="detail-container" style="background: linear-gradient(145deg, #ffd97a 0%, #ffbe3d 50%, #eaa620 100%);">
+	<div class="detail-pane-left">
+		<p><strong>Book_ID:</strong> {{book.id}}</p>
+		<p><strong>Name:</strong> {{ book.title }}</p>
+		<p><strong>Author:</strong> {{ book.author }}</p>
+		<p><strong>Stock:</strong> {{ book.stock }}</p>
+		<p><strong>Availablity:</strong> {{book.available_books}}</p>
+		<a href="{% url 'books' %}">
+			<button style="background-color:rgb(44, 61, 96); margin-bottom: -10px; margin-top: 5px">Back To List</button>
+		</a>
+	</div>
+	<div class="detail-pane-right">
+		<i class="detail-icon fa-solid fa-book"></i>
+	</div>
+</div>
+
+{% endblock %}
